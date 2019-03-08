@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.realdoer.dao.UserMapper">
+    <sql id="selectColumn">
+        user_id, user_name, user_password, user_email, phone, register_date, profile, avatar
+    </sql>
+
+    <resultMap type="top.realdoer.entity.User" id="user">
+        <id property="userId" column="user_id"/>
+        <result property="username" column="user_name"/>
+        <result property="password" column="user_password"/>
+        <result property="email" column="user_email"/>
+        <result property="phone" column="phone"/>
+        <result property="registerDate" column="register_date"/>
+        <result property="profile" column="profile"/>
+        <result property="avatar" column="avatar"/>
+    </resultMap>
+    
+    <select id="get" resultMap="user">
+        SELECT
+            <include refid="selectColumn"></include>
+        FROM
+            user
+        WHERE
+            user_id = #{userId}
+    </select>
+    
+    <insert id="save" useGeneratedKeys="true" keyProperty="userId" parameterType="top.realdoer.entity.User">
+        INSERT INTO
+            user (
+                user_name, user_password, user_email, phone, register_date, profile, avatar
+            )
+        VALUES (
+            #{username}, #{password}, #{email}, #{phone}, CURDATE(), #{profile}, #{avatar}
+        )
+    </insert>
+    
+    <update id="update">
+        UPDATE 
+            user
+        <!-- set 标签会为语句加上 "SET" 并去掉多余的逗号 -->
+        <set>
+            <if test="username!=null and username!= &quot;&quot;">
+                user_name = #{username},
+            </if>
+            <if test="password!=null and password!=&quot;&quot;">
+                user_password = #{password},
+            </if>
+            <if test="email!=null and email!=&quot;&quot;">
+                user_email = #{email},
+            </if>
+            <if test="phone!=null and phone!=&quot;&quot;">
+                phone = #{phone},
+            </if>
+            <if test="registerDate != null">
+                register_date = #{registerDate},
+            </if>
+            <if test="profile!=null and profile!=&quot;&quot;">
+                profile = #{profile},
+            </if>
+            <if test="avatar!=null and avatar!=&quot;&quot;">
+                avatar = #{avatar}
+            </if>
+        </set>  
+        WHERE
+            user_id = #{userId}
+    </update>
+    
+    <delete id="remove">
+        DELETE FROM
+            user
+        WHERE
+            user_id = #{userId}
+    </delete>
+    
+    <select id="listUser" resultMap="user">
+        SELECT
+            user_id, user_name, user_password, user_email, phone, register_date, profile, avatar
+        FROM
+            user
+        WHERE
+            user_id
+        IN
+            <foreach collection="userIds" item="userId" open="(" close=")" separator=",">
+                #{userId}
+            </foreach>
+    </select>
+    
+    <select id="existUserName" resultType="java.lang.Boolean">
+        SELECT
+            count(*)
+        FROM
+            user
+        WHERE
+            user_name = #{userName}
+    </select>
+    
+    <select id="existEmail" resultType="java.lang.Boolean">
+        SELECT
+            count(*)
+        FROM
+            user
+        WHERE
+            user_email = #{email}
+    </select>
+    
+    <select id="existPhone" resultType="java.lang.Boolean">
+        SELECT
+            count(*)
+        FROM
+            user
+        WHERE
+            phone = #{phone}
+    </select>
+    
+    <select id="existUser" resultType="java.lang.Boolean">
+        SELECT
+            count(*)
+        FROM
+            user
+        WHERE
+            user_id = #{userId}
+    </select>
+    
+    <select id="getUserByPhone" resultMap="user">
+        SELECT
+            <include refid="selectColumn"></include>
+        FROM
+            user
+        WHERE
+            phone = #{phone}
+    </select>
+    
+    <select id="getUserByUserName" resultMap="user">
+        SELECT
+            <include refid="selectColumn"></include>
+        FROM
+            user
+        WHERE
+            user_name = #{userName}
+    </select>
+</mapper>

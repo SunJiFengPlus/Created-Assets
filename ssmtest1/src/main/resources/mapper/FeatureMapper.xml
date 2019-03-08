@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.realdoer.dao.FeatureMapper">
+    
+    <resultMap type="java.lang.String" id="feature">
+        <constructor>
+            <idArg column="detail" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+    
+    
+    <insert id="save">
+        INSERT INTO
+            feature (
+                item_id, detail
+            )
+        VALUES
+            <foreach collection="feature" item="item" separator=",">
+                (#{itemId}, #{item})
+            </foreach>
+    </insert>
+    
+    <select id="list" resultMap="feature">
+        SELECT
+            detail
+        FROM
+            feature
+        WHERE
+            item_id = #{itemId}
+    </select>
+    
+    <sql id="update">
+        DELETE FROM
+            feature
+        WHERE
+            item_id = #{itemId};
+            
+        INSERT INTO
+            feature (
+                item_id, detail
+            )
+        VALUES
+            <foreach collection="feature" item="item" separator=",">
+                (#{itemId}, #{item})
+            </foreach>
+    </sql>
+    
+    <delete id="remove">
+        DELETE FROM
+            feature
+        WHERE
+            item_id = #{itemId}
+    </delete>
+    
+</mapper>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/file.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/Info.js"></script>
+    <script src="../js/file.js"></script>
+</head>
+<body>
+<div class="header min_width">
+    <div class="container">
+        <div class="header-bar">
+            <div class="header-left">
+                <img src="../images/logo.png" alt="">
+            </div>
+            <div class="header-right" style="background-color: #5ca11f; width: 100px;">
+                <div class="shop">
+                    <!-- <img src="images/shop.png" alt="">
+                    <span>2</span> -->
+                </div>
+                <div class="user">
+                    <a style="display: block; text-align: center; width: 100px; color: #fff; font-size: 18px; cursor: pointer;" id="SignIn">
+                        Sign In or On
+                    </a>
+                    <span class="exit">EXIT</span>
+                    <!-- <img src="images/user.png" alt="">
+                    <span>Sun Jifeng</span> -->
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="nav-cover">
+                <ul class="nav-item">
+                    <li><a href="#">Web Themes & Templates</a></li>
+                    <li><a href="#">Code</a></li>
+                    <li><a href="#">Video</a></li>
+                    <li><a href="#">Audio</a></li>
+                    <li><a href="#">Graphics</a></li>
+                    <li><a href="#">Potos</a></li>
+                    <li><a href="#">3D</a></li>
+                    <span></span>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sec-nav">
+    <div class="container">
+        <ul class="sec-item">
+            <li><a href="#">All Items</a></li>
+            <li><a href="#">WordPres</a></li>
+            <li><a href="#">Simple Site Builder</a></li>
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">CMS</a></li>
+            <li><a href="#">eCommerce</a></li>
+            <li><a href="#">Muse</a></li>
+            <li><a href="#">UI Design</a></li>
+            <li><a href="#">Plugins</a></li>
+            <li><a href="#">More</a></li>
+        </ul>
+    </div>
+</div>
+<!-- <div class="main-body">
+    <div class="container">
+        <div class="search">
+            <input type="text" placeholder="Search within these result"><button>Search</button>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- 文件上传头部 -->
+<section class="file_head min_width">
+    <div class="container">
+        <h2>Upload an Item to Site Templates</h2>
+    </div>
+</section>
+
+<!-- 文件上传 -->
+<section class="file min_width">
+    <div class="container">
+        <div class="file_left">
+            <div class="file_description file_container file_style">
+                <h3>Name & Description</h3>
+                <div>
+                    <span>Name</span>
+                    <div class="des_name">
+                        <input type="text">
+                        <p>ehfkcejcnf ejfek ejiked oejie</p>
+                    </div>
+                </div>
+                <div>
+                    <span>Key Features</span>
+                    <div class="des_key">
+                        <input type="text">
+                        <input type="text"> 
+                        <input type="text">
+                        <p>hdvkjdf oiid iowdi jnhdvkjdf oiid iowdi jnhdvkjdf oiid iowdi jnhdvkjdf oiid iowdi jnhdvkjdf oiid iowdi jnhdvkjdf oiid iowdi jn</p>
+                    </div>
+                </div> 
+                <div>
+                    <span>HTML Description</span>
+                    <div class="des_html">
+                        <textarea></textarea>
+                        <p>ejfkefkcl efoefkc edoe</p>
+                    </div>
+                </div>
+            </div>
+            <div class="file_files file_container">
+                <h3>Files</h3>
+                <div>
+                    <span>Thumbnail</span>
+                    <div>
+                        <select name="Thumbnail" class="file_files_sel">
+                            <option value="">aaa</option>
+                            <option value="">bbb</option>
+                            <option value="">ccc</option>
+                        </select>
+                        <p class="file_files_mark_p">JPEG or PNG 80×80px Thumbnail</p>
+                    </div>
+                </div>
+                <div>
+                    <span>Theme Preview</span>
+                    <div>
+                        <select name="" class="file_files_sel">
+                            <option value="">aaa</option>
+                            <option value="">bbb</option>
+                            <option value="">ccc</option>
+                        </select>
+                        <p class="file_files_sel_p">ZIP file of images(png/jpg)</p>
+                        <p class="file_files_mark_explain">ehdjhfjclf odoejd  oodi poip ehdjhfjclf odoejd  oodi poipehdjhfjclf odoejd  oodi poipehdjhfjclf odoejd  oodi poip</p>
+                        <p class="file_files_mark_explain">ehdjhfjclf odoejd  oodi poip ehdjhfjclf odoejd  oodi poipehdjhf jehdjhfjclf odoejd  oodi poip ehdjhfjclf odoejd  oodi poipehdjh fjclf odoejd  oodi poipehdjhfjclf odoejd  oodi poipclf odoejd  oodi poipehdjhfjclf odoejd  oodi poip</p>
+                        <p class="file_files_mark_explain">ehdjhfjclf odoejd  oodi poip ehdjhfjclf odoejd  oodi ehdjhfjclf odoejd  oodi poip ehdjhfjclf odoejd  oodi poipehdjhfjclf odoejd  oodi poipehdjhfjclf odoejd  oodi poip poipehdjhfjclf odoejd  oodi poipehdjhfjclf odoejd  oodi poip</p>
+                    </div>
+                </div>
+                <div>
+                    <span>Main File(s)</span>
+                    <div>
+                        <div id="file_btn_1" class="file_btn">
+                            <input type="file" class="file_files_file">点击上传文件<p></p>
+                        </div>
+                        <p class="file_files_mark_p">ZIP - All files for buyers, not including preview images</p>
+                        <span>Optional</span>
+                        <span>WordPress</span>
+                        <span>Theme</span>
+                        <div id="file_btn_2" class="file_btn">
+                            <input type="file" class="file_files_file">点击上传文件<p></p>
+                        </div>
+                        <p class="file_files_mark_p">ZIP containing an installable WordPress Theme</p>
+                        <p class="file_files_mark_explain">For files over 500MB we recommend <strong>uploading via FTP</strong>. The maximum file size allowed is 3GB - please ensure compression has been optimized before uploading.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="file_category file_container file_style">
+                <h3>Category & Attributes</h3>
+                <div>
+                    <span>Compatible Browsers</span>
+                    <div>
+                        <input type="checkbox" value="IE6"><b>IE6</b>
+                        <input type="checkbox" value="IE7"><b>IE7</b>
+                        <input type="checkbox" value="IE8"><b>IE8</b>
+                        <input type="checkbox" value="IE9"><b>IE9</b>
+                        <input type="checkbox" value="IE10"><b>IE10</b>
+                        <input type="checkbox" value="IE11"><b>IE11</b>
+                        <input type="checkbox" value="Firefox"><b>Firefox</b>
+                    </div>
+                </div>
+                <div>
+                    <span>Compatible With</span>
+                    <div>
+                        <input type="checkbox" value=""><b>N/A</b>
+                        <input type="checkbox" value="Facebook"><b>Facebook</b>
+                        <input type="checkbox" value="Ecwid"><b>Ecwid</b>
+                        <input type="checkbox" value="AngularJS"><b>AngularJS</b>
+                        <input type="checkbox" value="AngularJS 2"><b>AngularJS 2</b>
+                        <input type="checkbox" value="AngularJS 3.0.x"><b>AngularJS 3.0.x</b>
+                        <input type="checkbox" value="AngularJS 4.0.x"><b>AngularJS 4.0.x</b>
+                    </div>
+                </div>
+                <div>
+                    <span>ThemeForest Files Included</span>
+                    <div>
+                        <input type="checkbox" value="Layered PNG"><b>Layered PNG</b>
+                        <input type="checkbox" value="Layered PSD"><b>Layered PSD</b>
+                        <input type="checkbox" value="PHP Files"><b>PHP Files</b>
+                        <input type="checkbox" value="Ecwid CSS Files"><b>Ecwid CSS Files</b>
+                        <input type="checkbox" value="Muse File"><b>Muse File</b>
+                        <input type="checkbox" value="HBS Files"><b>HBS Files</b>
+                    </div>
+                </div>
+                <div>
+                    <span>Demo URL</span>
+                    <div>
+                        <input type="text" class="cate_url">
+                        <p>Link to a live preview on your own hosting(i.e.https://my-site.com/demo/).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="file_Tag file_container file_style">
+                <h3>Tags</h3>
+                <div>
+                    <span>Tags</span>
+                    <div>
+                        <textarea name=""></textarea>
+                        <p>qwuiw wuideu ouwoid</p>
+                    </div>
+                </div>
+            </div>
+            <div class="file_set file_container">
+                <h3>Set Your Price(US$)</h3>
+                <div>
+                    <p>urig 9rfor iueofi ieupfo uoi iuo  oieuoif oi</p>
+                </div>
+                <div class="file_No_padding">
+                    <div class="file_set_left">
+                        <div class="file_set_left_left"><p>Regular License</p></div>
+                        <div class="file_set_left_right">
+                            <div>
+                                <strong>Item price</strong>
+                                <strong>Buyer fee</strong>
+                                <strong class="total">Purchase price</strong>
+                            </div>
+                            <div>
+                                <i>$</i><input type="text"><i>+</i><span>$4</span><i>=</i><b class="total">$4</b>
+                            </div>
+                            <p>How much of this will I earn?</p>
+                        </div>
+                    </div>
+                    <div class="file_set_right">
+                       Recommended purchase price $14 - $17 
+                    </div>
+                </div>
+                <div class="file_No_padding">
+                    <div class="file_set_left">
+                        <div class="file_set_left_left"><p>Extended License</p></div>
+                        <div class="file_set_left_right">
+                            <div>
+                                <strong>Item price</strong>
+                                <strong>Buyer fee</strong>
+                                <strong class="total">Purchase price</strong>
+                            </div>
+                            <div>
+                                <i>$</i><input type="text"><i>+</i><span>$200</span><i>=</i><b class="total">$200</b>
+                            </div>
+                            <p>How much of this will I earn?</p class="total">
+                        </div>
+                    </div>
+                    <div class="file_set_right">
+                        Recommended purchase price $700 - $850
+                    </div>
+                </div>
+                <div>
+                    <p>wjfeb iuieh iuid  iow io </p>
+                </div>
+            </div>
+            <div class="file_message file_container file_style">
+                <h3>Message to the Reviewer</h3>
+                <div>
+                    <div>
+                        <p><input type="checkbox"> qwer asdf qwer asdf qwer asdf qwer asdf qwer asdf qwer asdf qwer asdf</p>
+                    </div>
+                </div>
+                <button class="submit" type="submit">Upload</button>
+            </div>
+        </div>
+        <div class="file_right">
+            <div class="file_right_get">
+                <h4>Get your item accepted</h4>
+                <div>
+                    <p>To give your item the best chance possible to be accepted, please make sure you've:</p>
+                    <ul>
+                        <li>Read and follow the upload instructions.</li>
+                        <li>Added useful tags and ensured they're spelled correctly(this helps buyers find your file).</li>
+                        <li>Added a thorough and useful item description(this also helps buyers find your file).</li>
+                    </ul>
+                    <p>If you've done all that, you're ready to upload. Thanks for selling with Envato!</p>
+                </div>
+            </div>
+            <div class="file_right_get">
+                <h4>Get your item accepted</h4>
+                <div>
+                    <p>To give your item the best chance possible to be accepted, please make sure you've:</p>
+                    <ul>
+                        <li>Read and follow the upload instructions.</li>
+                        <li>Added useful tags and ensured they're spelled correctly(this helps buyers find your file).</li>
+                        <li>Added a thorough and useful item description(this also helps buyers find your file).</li>
+                    </ul>
+                    <p>If you've done all that, you're ready to upload. Thanks for selling with Envato!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<!-- 尾部 -->
+<footer class="min_width">
+    <div class="container">
+        <div class="footer_up">
+            <ul>
+                <li>
+                    <h5>ENVATO MARKEI</h5>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Terms</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Licenses</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Market API</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Become an affiliate</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h5>HELP</h5>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Themes and Templates</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Websites</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">AUthors API</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Help Center</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <h5>JOIN OUR COMMUNITY</h5>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Community</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Blog</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Forums</a>
+                </li>
+                <li>
+                    <a href="javascript:;" title="">Meetups</a>
+                </li>
+            </ul>
+            <img src="../images/logo.png" alt="">
+        </div>
+        <div class="footer_down">
+            <ul>
+                <li><a href="javascript:;" title="">About Envato</a></li>
+                <li><a href="javascript:;" title="">Careers</a></li>
+                <li><a href="javascript:;" title="">Privacy policy</a></li>
+                <li><a href="javascript:;" title="">Sitemap</a></li>
+            </ul>
+            <p>All prices are in US dollars</p>
+            <p>© 2018 Envato Pty Ltd. Trademarks and brands are the property of their respective owners.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    $(".exit").click(function(){
+        window.location.href="sign.html";
+    });
+</script>
+</body>
+</html>

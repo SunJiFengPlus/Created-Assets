@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.realdoer.dao.ItemMapper">
+
+    <sql id="ShareField">
+        item_id, type, author_id, title, description, thumbnail, preview, main_file, release_date,
+        last_update, sales, regular_license_price, extended_license_price,
+    </sql>
+    
+    <sql id="insertField">
+        type, author_id, title, description, thumbnail, preview, main_file, release_date, last_update,
+        sales, regular_license_price, extended_license_price,
+    </sql>
+    
+    <sql id="insertProperty">
+        #{type}, #{authorId}, #{title}, #{description}, #{thumbnail}, #{preview}, #{mainFile}, CURDATE(), 
+        CURDATE(), 0, #{regularLicensePrice}, #{extendedLicensePrice},
+    </sql>
+    
+    <sql id="OtherField">
+        demo_url
+    </sql>
+    
+	<resultMap type="top.realdoer.entity.Item" id="Item">
+        <discriminator javaType="java.lang.Byte" column="type">
+            <!-- value 不解析 ognl 表达式, 关联: top.realdoer.constant.ItemType, 修改时一并修改 -->
+            <case value="0" resultMap="top.realdoer.dao.TemplateHtmlMapper.TemplateHtml"></case>
+        </discriminator>
+	</resultMap>
+	
+	<select id="getItem" resultMap="Item">
+        SELECT
+            <include refid="ShareField"/>
+            <include refid="OtherField"/>
+        FROM
+            item
+        WHERE
+            item_id = #{itemId}
+	</select>
+	
+	<select id="listPortfolio" resultMap="Item">
+        SELECT  
+            <include refid="ShareField"/>
+            <include refid="OtherField"/>
+        FROM
+            item
+        WHERE
+            author_id = #{authorId}
+	</select>
+	
+	<select id="listItem" resultMap="Item">
+        SELECT
+            <include refid="ShareField"/>
+            <include refid="OtherField"/>
+        FROM
+            item
+        WHERE
+            item_id
+        IN
+            <foreach collection="itemIds" item="itemId" open="(" close=")" separator=",">
+                #{itemId}
+            </foreach>
+	</select>
+	
+	<select id="getAuthorId" resultType="java.lang.Integer">
+        SELECT
+            author_id
+        FROM
+            item
+        WHERE
+            item_id = #{itemId}
+	</select>
+	
+	<select id="exist" resultType="java.lang.Boolean">
+        SELECT
+            count(*)
+        FROM
+            item
+        WHERE
+            item_id = #{itemId}
+	</select>
+	
+	<delete id="removeItem">
+        DELETE FROM
+            item
+        WHERE
+            item_id = #{itemId}
+    </delete>
+</mapper>

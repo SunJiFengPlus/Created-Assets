@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/main2.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/sign.js"></script>
+    <script src="../js/Info.js"></script>
+    <style>
+        .btn{
+            width: 200px;
+            height: 47px;
+            border: 1px solid #5ca11f;
+            border-radius: 5px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+            margin: 15px 0;
+            text-indent: 10px;
+            font-size: 14px;
+            color: rgba(0,0,0,0.5);
+            background: #5ca11f;
+            box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+            color: #fff;
+            cursor: pointer;
+        }
+        .num{
+            width: 250px;
+            float: left;
+            border-top-right-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="header-bar">
+            <div class="header-left">
+                <img src="../images/logo.png" alt="">
+            </div>
+            <div class="header-right" style="background-color: #5ca11f; width: 100px;">
+                <div class="shop">
+                    <!-- <img src="images/shop.png" alt="">
+                    <span>2</span> -->
+                </div>
+                <div class="user">
+                    <a style="display: block; text-align: center; width: 100px; color: #fff; font-size: 18px; cursor: pointer;" id="SignIn" class="signIn">Sign In or On</a>
+                    <!-- <img src="images/user.png" alt="">
+                    <span>Sun Jifeng</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-content">
+    <div class="container">
+        <div class="footer-line">
+            <div class="form-left">
+                <h1>Create a new Envato Account</h1>
+                <p>Your Envato Account is a single username and password for all of the Envato Market sites,listed below.you can use it to sign in and buy or ssell
+                    difital goods like WordPress themes,background music ,music,After Effects project files,graphics,photography and much more.
+                </p>
+                <img src="../images/g3.png" alt="">
+                <p><strong>Already have an account with any of these sites?</strong>
+                    Them you already have an Envato account and can sign in with you existing username and password.
+                </p>
+                <button class="signIn">sign in</button><span>to you existing account</span>
+            </div>
+            <div class="form-right">
+                <div class="form-right-fix">
+                    <form action="" id="registerForm">
+                        <h1>Create Account</h1>
+                        <div class="input-fix">
+                            <input type="text" placeholder="昵称" class="name register_info form-input" name="register_name">
+                            <input type="text" placeholder="手机号" class="tel register_info form-input" name="register_tel">
+                            <input type="text" placeholder="验证码" class="num register_info form-input" name="register_num">
+                            <input type="button" id="verificationCode" class="register_info btn" value="获取验证码">
+                            <input type="password" placeholder="密码" class="password register_info form-input" name="register_password">
+                            
+                        </div>
+                        <span class="what">What is a secure password</span>
+                        <input type="checkbox" class="check" name="checkbox"> i agree to the Enovato <span>Privacy Policy</span>
+                        <div class="create">
+                            <button type="button" class="registerBtn" id="register">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="loginDiv" class="login">
+            <form>
+                <label><span>用户名：</span><input class="form-input username" type="text"></label><br>
+                <label><span>密码：</span><input class="form-input password" type="password"></label><br>
+                <p><input id="login" type="button" value="登录"></p>
+            </form>
+            <span id="close">&times;</span>
+        </div>
+        <div class="footer-text">
+            <ul>
+                <li>Help Center</li>
+                <li>About Envato</li>
+                <li>Privacy Police</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

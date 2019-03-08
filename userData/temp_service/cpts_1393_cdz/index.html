@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<!-- meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //meta tags -->
+<!-- Custom Theme files -->
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script> 
+<!-- //js --> 
+<!-- web fonts -->
+<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<!-- //web fonts -->
+</head>
+<body>
+	<!-- header -->
+	<div class="header">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header navbar-left">
+					<h1><a href="index.html">Light Fixture <span>Modern Designing Lights</span></a></h1>
+				</div>
+				<!-- navigation --> 
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="header-right">
+					<div class="agileits-topnav">
+						<ul>
+							<li><span class="glyphicon glyphicon-earphone"></span> +11 111 2222</li>
+							<li><a class="email-link" href="mailto:example@mail.com"> <span class="glyphicon glyphicon-envelope"></span> mail@example.com</a></li>
+							<li class="social-icons"> 
+								<ul>
+									<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
+									<li><a href="#" class="fa fa-twitter icon icon-border twitter"> </a></li>
+									<li><a href="#" class="fa fa-google-plus icon icon-border googleplus"> </a></li> 
+								</ul>
+								<div class="clearfix"> </div> 
+							</li>
+						</ul>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">					
+						<ul class="nav navbar-nav navbar-left">
+							<li class="active"><a href="index.html"><span>H</span><span>O</span><span>M</span><span>E</span></a></li>
+							<li><a href="about.html" class="link link--yaku"><span>A</span><span>B</span><span>O</span><span>U</span><span>T</span> <span>U</span><span>S</span></a></li>
+							<li><a href="#" class="dropdown-toggle link link--yaku" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>P</span><span>A</span><span>G</span><span>E</span><span>S</span><span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="icons.html" class="link link--yaku"><span>W</span><span>E</span><span>B</span> <span>I</span><span>C</span><span>O</span><span>N</span><span>E</span><span>S</span></a></li>
+									<li><a href="codes.html" class="link link--yaku"><span>S</span><span>H</span><span>O</span><span>R</span><span>T</span> <span>C</span><span>O</span><span>D</span><span>E</span><span>S</span></a></li>
+								</ul>
+							</li>
+							<li><a href="gallery.html" class="link link--yaku"><span>G</span><span>A</span><span>L</span><span>L</span><span>E</span><span>R</span><span>Y</span></a></li>
+							<li><a href="contact.html" class="link link--yaku"><span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span> <span>U</span><span>S</span></a></li>
+						</ul>		
+						<div class="clearfix"> </div>
+					</div><!-- //navigation -->
+				</div>
+				<div class="clearfix"> </div>
+			</div>	
+		</nav>		
+	</div>	
+	<!-- //header -->
+	<!-- banner -->
+	<div class="banner"> 
+		<section class="slider">
+			<div class="flexslider">
+				<ul class="slides">
+					<li>
+						<div class="banner-img1">
+							<div class="banner-w3text">
+								<h3>Temporibus autem</h3>
+								<p>Quisque nunc nunc, ullamcorper eget vehicula non, volutpat quis enim. Donec massa ipsum, imperdiet eu ornare vel, varius ac ipsum. Curabitur sagittis ultrices</p>								
+								<a href="#" class="effect6" data-toggle="modal" data-target="#myModal"><span>Read More</span></a>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="banner-img2">
+							<div class="banner-w3text">
+								<h3> Lautem quibusdam</h3>
+								<p>Donec massa ipsum, imperdiet eu ornare vel, varius ac ipsum. Curabitur sagittis ultrices Quisque nunc nunc, ullamcorper eget vehicula non, volutpat quis enim</p>								
+								<a href="#" class="effect6" data-toggle="modal" data-target="#myModal"><span>Read More</span></a>
+							</div>
+						</div>
+					</li>
+				</ul> 
+			</div>
+		</section> 
+		<!-- FlexSlider -->
+		<script defer src="js/jquery.flexslider.js"></script>
+		<script type="text/javascript">
+			$(window).load(function(){
+			  $('.flexslider').flexslider({
+				animation: "slide",
+				start: function(slider){
+				  $('body').removeClass('loading');
+				}
+			  });
+			});
+		</script>
+		<!-- //FlexSlider -->
+	</div>
+	<!-- banner -->
+	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+	<!-- modal -->
+	<div class="modal about-modal w3-agileits fade" id="myModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+				</div> 
+				<div class="modal-body">
+					<img src="images/img18.jpg" alt=""> 
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum iaculis enim, non convallis felis mattis at. Donec fringilla lacus eu pretium rutrum. Cras aliquet congue ullamcorper. Etiam mattis eros eu ullamcorper volutpat. Proin ut dui a urna efficitur varius. uisque molestie cursus mi et congue consectetur adipiscing elit cras rutrum iaculis enim, Lorem ipsum dolor sit amet, non convallis felis mattis at. Maecenas sodales tortor ac ligula ultrices dictum et quis urna. Etiam pulvinar metus neque, eget porttitor massa vulputate. </p>
+				</div> 
+			</div>
+		</div>
+	</div>
+	<!-- //modal -->  
+	<!-- banner-bottom -->
+	<div class="w3-agile-text">
+		<div class="container"> 
+			<h2>Lorem ipsum dolor sit amet, <span>consectetur</span> adipiscing elit.</h2>
+			<p>Vivamus vitae elementum velit. Morbi convallis nisi velit, maximus consequat lacus sagittis et. Sed at fringilla erat, id mollis eros.</p>
+		</div>
+	</div>
+	<!-- //banner-bottom -->
+	<!-- features -->
+	<div class="features">
+		<div class="container">
+			<div class="col-md-4 feature-grids">
+				<h3 class="w3ltitle">WHAT <span>WE ARE</span></h3>
+				<p>Ut porttitor ut est eu ornare. In metus dui, suscipit at viverra faucibus, accumsan at odio. Duis finibus sollicitudin libero, sed tempor diam euismod sed. Sed interdum odio a finibus gravida. Aliquam tincidunt nisl nec urna euismod, ullamcorper scelerisque magna vulputate.</p>
+				<p>Duis finibus sollicitudin libero, sed tempor diam euismod sed. Sed interdum odio a finibus gravida. Aliquam tincidunt nisl nec urna euismodl nec.</p>
+				<div class="w3ls-more">
+					<a href="#" class="effect6" data-toggle="modal" data-target="#myModal"><span>Read More</span></a>
+				</div>
+			</div>
+			<div class="col-md-4 feature-grids">
+				<img src="images/3.jpg" alt=""/>
+			</div>
+			<div class="col-md-4 feature-grids">
+				<h3 class="w3ltitle">OUR SPECIFICATIONS</h3>
+				<div class="w3ls-pince">
+					<div class="pince-left">
+						<h5>01</h5>
+					</div>
+					<div class="pince-right">
+						<h4>Quasellus eget purus mauris </h4>
+						<p>Vero vulputate enim non justo posuereces placerat vel mauris.</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="w3ls-pince">
+					<div class="pince-left">
+						<h5>02</h5>
+					</div>
+					<div class="pince-right">
+						<h4>Quasellus eget purus mauris </h4>
+						<p>Vero vulputate enim non justo posuere placerat Phasellus mauris.</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="w3ls-pince">
+					<div class="pince-left">
+						<h5>03</h5>
+					</div>
+					<div class="pince-right">
+						<h4>Quasellus eget purus mauris </h4>
+						<p>Vero vulputate enim non justo posuere placerat eget.</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //features -->
+	<!-- projects -->
+	<div class="projects">
+		<div class="container">
+			<div class="col-md-3 project-right w3layouts">
+				<h3 class="w3ltitle">New<span> Designs</span></h3>
+				<p>Vero vulputate enim non justo posuere placerat Phasellus mauris vulputate enim non justo posuere placerat egetposuere enim .</p>
+			</div>
+			<div class="col-md-9 project-left">
+				<!-- flex-slider -->
+				<div class="work-bottom">
+					<div class="nbs-flexisel-container"><div class="nbs-flexisel-inner">
+						<ul id="flexiselDemo1" class="nbs-flexisel-ul" style="left: -285px; display: block;">																																		
+							<li class="nbs-flexisel-item" style="width: 285px;">
+								<div class="project-grids">
+									<img src="images/img1.jpg" alt="">
+									<div class="team-bottom">
+									</div>
+								</div>
+							</li>
+							<li class="nbs-flexisel-item" style="width: 285px;">
+								<div class="project-grids">
+									<img src="images/img2.jpg" alt="">
+									<div class="team-bottom">
+									</div>
+								</div>
+							</li>
+							<li class="nbs-flexisel-item" style="width: 285px;">
+								<div class="project-grids">
+									<img src="images/img3.jpg" alt="">
+									<div class="team-bottom">
+									</div>
+								</div>
+							</li>
+							<li class="nbs-flexisel-item" style="width: 285px;">
+								<div class="project-grids">
+									<img src="images/img4.jpg" alt="">
+									<div class="team-bottom">
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="nbs-flexisel-nav-left" style="top: 138px;"></div><div class="nbs-flexisel-nav-right" style="top: 138px;"></div></div></div>
+							<script type="text/javascript">
+								$(window).load(function() {
+									$("#flexiselDemo1").flexisel({
+										visibleItems: 4,
+										animationSpeed: 1000,
+										autoPlay: true,
+										autoPlaySpeed: 3000,    		
+										pauseOnHover: true,
+										enableResponsiveBreakpoints: true,
+										responsiveBreakpoints: { 
+											portrait: { 
+												changePoint:480,
+												visibleItems: 2
+											}, 
+											landscape: { 
+												changePoint:640,
+												visibleItems: 3
+											},
+											tablet: { 
+												changePoint:768,
+												visibleItems: 3
+											}
+										}
+									});
+									
+								});
+							</script>
+							<script type="text/javascript" src="js/jquery.flexisel.js"></script>				
+						<!-- //flex-slider -->	
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!-- //projects -->
+	<!-- services -->
+	<div class="services">
+		<div class="container">
+			<h3 class="w3ltitle"> OUR SERVICES</h3>
+			<div class="services-agileinfo">
+				<div class="servc-icon">
+					<a href="#" class="agile-shape"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+					<p class="serw3-agiletext">Specialist</p>
+					</a>
+				</div>
+				<div class="servc-icon">
+					<a href="#" class="agile-shape"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+					<p class="serw3-agiletext"> Bonorum </p>
+					</a>
+				</div>
+				<div class="servc-icon">
+					<a href="#" class="agile-shape"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					<p class="serw3-agiletext">Specialist</p>
+					</a>
+				</div>
+				<div class="servc-icon">
+					<a href="#" class="agile-shape"><span class="glyphicon glyphicon-lamp" aria-hidden="true"></span>
+					<p class="serw3-agiletext"> Bonorum </p>
+					</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //services -->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<h3 class="w3ltitle">GET IN <span>TOUCH</span></h3>
+			<div class="footer-agileinfo">
+				<div class="col-md-6 footer-left">
+					<h5><a href="#">Ready to hire me?</a></h5>
+					<div class="w3ls-more">
+						<a href="contact.html" class="effect6">Get in touch</a>
+					</div>
+				</div>
+				<div class="col-md-6 footer-right">
+					<div class="address">
+						<div class="col-xs-2 contact-grdl">
+							<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+						</div>
+						<div class="col-xs-10 contact-grdr">
+							<p>+111 222 3333 111</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="address">
+						<div class="col-xs-2 contact-grdl">
+							<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+						</div>
+						<div class="col-xs-10 contact-grdr">
+							<p>345 Spruce Street, London.</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="address">
+						<div class="col-xs-2 contact-grdl">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</div>
+						<div class="col-xs-10 contact-grdr">
+							<p><a href="mailto:example@mail.com">mail@example.com</a></p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- copy-right -->
+		<div class="copy-right agileits-w3layouts">
+			<div class="container">
+				<div class="social-icons">
+					<ul>
+						<li><a href="#" class="fa fa-facebook icon icon-border facebook"> </a></li>
+						<li><a href="#" class="fa fa-twitter icon icon-border twitter"> </a></li>
+						<li><a href="#" class="fa fa-google-plus icon icon-border googleplus"> </a></li>
+						<li><a href="#" class="fa fa-dribbble icon icon-border dribbble"> </a></li>
+						<li><a href="#" class="fa fa-rss icon icon-border rss"> </a></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div> 
+				<p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>	
+			</div>
+		</div>
+		<!-- //copy-right -->
+	</div>
+	<!-- //footer --> 
+	<!-- start-smooth-scrolling-->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>	
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+			
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<!-- //end-smooth-scrolling -->	
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>

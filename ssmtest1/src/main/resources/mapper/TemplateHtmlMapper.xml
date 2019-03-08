@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.realdoer.dao.TemplateHtmlMapper">
+
+    <sql id="TemplateHtmlField">
+        demo_url
+    </sql>
+    
+    <sql id="TemplateHtmlProperties">
+        #{demoUrl}
+    </sql>
+
+    <resultMap type="top.realdoer.entity.TemplateHtml" id="TemplateHtml">
+        <id property="itemId" column="item_id" />
+        <result property="authorId" column="author_id" />
+        <result property="title" column="title" />
+        <result property="description" column="description" />
+        <result property="thumbnail" column="thumbnail" />
+        <result property="preview" column="preview" />
+        <result property="mainFile" column="main_file" />
+        <result property="releaseDate" column="release_date" />
+        <result property="lastUpdate" column="last_update" />
+        <result property="sales" column="sales" />
+        <result property="regularLicensePrice" column="regular_license_price" />
+        <result property="extendedLicensePrice" column="extended_license_price" />
+        <result property="type" column="type" javaType="top.realdoer.constant.ItemType"/>
+        <result property="demoUrl" column="demo_url"/>
+        <association property="rate" column="item_id" 
+            select="top.realdoer.dao.RateMapper.get" fetchType="eager"/>
+        <!-- 分步查询: 将 column 列的值作为 select 语句的参数传入, ofType: List<ofType的全类名> -->
+        <collection property="feature" column="item_id" ofType="java.lang.String"
+            select="top.realdoer.dao.FeatureMapper.list" fetchType="eager" />
+        <collection property="tag" column="item_id" ofType="java.lang.String"
+            select="top.realdoer.dao.TagMapper.list" fetchType="eager" />
+        <collection property="fileInclude" column="item_id" ofType="top.realdoer.constant.FileTypeEnum" 
+            select="top.realdoer.dao.FileIncludeMapper.list" fetchType="eager" />
+        <collection property="compatibleBrower" column="item_id" ofType="top.realdoer.constant.BrowerEnum"
+            select="top.realdoer.dao.CompatibleBrowerMapper.list" fetchType="eager"/>
+        <collection property="compatibleScript" column="item_id" ofType="top.realdoer.constant.ScriptEnum"
+            select="top.realdoer.dao.CompatibleScriptMapper.list" fetchType="eager"/>
+    </resultMap>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="itemId" keyColumn="item_id">
+        INSERT INTO
+            item (
+                <include refid="top.realdoer.dao.ItemMapper.insertField"></include>
+                <include refid="TemplateHtmlField"></include>
+            )
+        VALUES (
+            <include refid="top.realdoer.dao.ItemMapper.insertProperty"></include>
+            <include refid="TemplateHtmlProperties"></include>
+        )
+    </insert>
+    
+    <delete id="remove">
+        DELETE FROM
+            item
+        WHERE
+            item_id = #{itemId}
+    </delete>
+    
+    <update id="update">
+        UPDATE
+            item
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="thumbnail != null">
+                thumbnail = #{thumbnail},
+            </if>
+            <if test="preview != null">
+                preview = #{preview},
+            </if>
+            <if test="mainFile != null">
+                main_file = #{mainFile},
+            </if>
+            <if test="regularLicensePrice != null">
+                regular_license_price = #{regularLicensePrice},
+            </if>
+            <if test="extendedLicensePrice != null">
+                extended_license_price = #{extendedLicensePrice},
+            </if>
+            <if test="demoUrl != null">
+                demo_url = #{demoUrl},
+            </if>
+            last_update = CURDATE()
+        </set>
+        WHERE
+            item_id = #{itemId}
+    </update>
+    
+    <select id="get" resultMap="TemplateHtml">
+        SELECT
+            <include refid="top.realdoer.dao.ItemMapper.ShareField"></include>
+            <include refid="TemplateHtmlField"></include>
+        FROM
+            item
+        WHERE
+            item_id = #{itemId}
+    </select>
+    
+    <select id="listByFilter" resultMap="TemplateHtml">
+        SELECT
+            <include refid="top.realdoer.dao.ItemMapper.ShareField"></include>
+            <include refid="TemplateHtmlField"></include>
+        FROM
+            item
+        WHERE 
+            1=1
+            <if test="maxPrice != null">
+                AND <![CDATA[regular_license_price <]]> #{maxPrice}
+            </if>
+            <if test="minPrice != null">
+                AND <![CDATA[regular_license_price >]]> #{minPrice}
+            </if>
+            <if test="pastDay != null">
+                AND <![CDATA[TO_DAYS(CURDATE()) - TO_DAYS(last_update) <=]]> #{pastDay}
+            </if>
+            <if test="rate != null">
+                AND <![CDATA[regular_license_price >]]> #{minPrice}
+            </if>
+            <if test="titleLike != null">
+                AND title LIKE CONCAT('%',#{titleLike},'%')
+            </if>
+        <if test="sortBy != null">
+            ORDER BY
+                ${sortBy.getValue()}
+            <if test="sortMethod != null">
+                ${sortMethod.getValue()}
+            </if>
+        </if>
+    </select>
+    
+    <select id="getAuthorId" resultType="java.lang.Integer">
+        SELECT
+            author_id
+        FROM
+            item
+        WHERE
+            item_id = #{authorId}
+    </select>
+</mapper>

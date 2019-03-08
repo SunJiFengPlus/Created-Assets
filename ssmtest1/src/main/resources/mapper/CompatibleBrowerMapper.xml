@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.realdoer.dao.CompatibleBrowerMapper">
+
+    <resultMap type="top.realdoer.constant.BrowerEnum" id="compatibleBrower">
+        <constructor>
+            <idArg column="brower"/>
+        </constructor>
+    </resultMap>
+    
+    <select id="list" resultMap="compatibleBrower">
+        SELECT
+            brower
+        FROM
+            compatible_brower
+        WHERE
+            item_id = #{webTemplateItemId}
+    </select>
+    
+    <insert id="save">
+        INSERT INTO
+            compatible_brower (
+                item_id, brower
+            )
+        VALUES (
+            #{webTemplateId}, #{browerEnum}
+        )
+    </insert>
+    
+    <insert id="saveList">
+        INSERT INTO
+            compatible_brower (
+                item_id, brower
+            )
+        VALUES
+            <foreach collection="browerKeys" item="browerKey" separator=",">
+                (#{webTemplateId}, #{browerKey})
+            </foreach>
+    </insert>
+    
+</mapper>

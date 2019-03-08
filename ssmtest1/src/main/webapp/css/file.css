@@ -1,0 +1,345 @@
+/*文件上方*/
+.file_head{
+    border-bottom: 1px solid #e1e8ed;
+    background-color: #f5f5f5;
+    font-size: 24px;
+    line-height: 90px;
+    color: #454545;
+}
+/*文件*/
+.file{
+    overflow: hidden;
+    margin-bottom: 90px;
+}
+.file .file_left{
+    width: 66%;
+    float: left;
+}
+.file .file_right{
+    width: 30%;
+    float: right;
+}
+.file .file_container{
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.file .file_container h3{
+    font-size: 20px;
+    color: #454545;
+    margin-bottom: 30px;
+}
+
+.file .file_style>div{
+    display: flex;
+    margin-bottom: 30px;
+}
+.file .file_style>div>span{
+    width: 20%;
+    text-align: left;
+    line-height: 30px;
+}
+.file .file_style>div>div{
+    width: 80%;
+}
+.file .file_style>div>div>input{
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+}
+
+.file .file_description>div>div.des_name>input{
+    width: 60%;
+}
+.file .file_description>div>div.des_key>input{
+    width: 100%;
+}
+.file .file_container>div>div>p{
+    line-height: 20px;
+    font-size: 14px;
+    color: #898989;
+}
+.file .file_description>div>div.des_html>textarea{
+    width: 100%;
+    min-width: 50%;
+    max-width: 100%;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+}
+
+.file .file_files>div{
+    margin-top: 30px;
+}
+.file .file_files>div>div{
+    width: 100%;
+}
+.file .file_files .file_files_sel{
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+}
+.file .file_files span{
+    color: #454545;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    line-height: 20px;
+}
+.file .file_files .file_files_mark_p{
+    font-size: 18px;
+    color: #565656;
+    margin-bottom: 20px;
+}
+.file .file_files .file_files_mark_explain{
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #565656;
+}
+
+
+
+
+/*文件上传按钮设置*/
+.file_btn{
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    position: relative;
+}
+.file .file_files .file_files_file{
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #999;
+    opacity: 0;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+}
+#file_btn_1,#file_btn_2{
+    line-height: 30px;
+}
+#file_btn_1 p,#file_btn_2 p{
+    display: inline-block;
+}
+
+
+
+
+
+
+.file .file_category>div>div>input.cate_url{
+    width: 60%;
+}
+.file .file_category b{
+    vertical-align: top;
+    line-height: 30px;
+    margin-left: 10px;
+    font-weight: normal;
+}
+.file .file_Tag>div{
+    display: flex;
+}
+.file .file_Tag>div>span{
+    width: 20%;
+    text-align: left;
+    line-height: 30px;
+}
+.file .file_Tag>div>div{
+    width: 80%
+}
+.file .file_Tag>div>div>textarea{
+    width: 100%;
+    min-width: 50%;
+    max-width: 100%;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+}
+.file_message{
+    overflow: hidden;
+}
+.file_message button.submit{
+    border: none;
+    background-color: #686868;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 30px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    float: right;
+}
+
+.file .file_set{
+    padding: 20px 0;
+}
+.file .file_set>div{
+    border-bottom: 1px solid #e1e8ed;
+    display: flex;
+    padding: 0 20px;
+}
+.file .file_set>div:last-child{
+    border-bottom: none;
+}
+.file .file_set>div>div{
+    display: flex;
+}
+.file .file_set>div>div.file_set_left{
+    width: 75%;
+    border-right: 1px solid #e1e8ed;
+}
+.file .file_set>div>div.file_set_right{
+    width: 25%;
+}
+.file .file_set>div>div>div.file_set_left_left{
+    width: 25%;
+}
+.file .file_set>div>div>div.file_set_left_right{
+    width: 75%;
+}
+
+
+.file .file_set_left_left{
+    /*position: relative;*/
+    padding: 50px 0;
+}
+.file .file_set_left_left p{
+    text-align: left;
+}
+
+
+
+
+
+.file .file_set_left_right{
+    padding: 20px 0;
+}
+.file .file_set_left_right>div{
+    margin-bottom: 10px;
+}
+.file .file_set_left_right p{
+    font-size: 14px;
+    color: #1782ae;
+}
+.file .file_set_left_right>div>strong{
+    padding: 0 10px;
+    font-weight: 500;
+    color: #787878;
+}
+.file .file_set_left_right>div>strong.total{
+    color: #39b9a2;
+}
+.file .file_set_left_right>div>i{
+    font-style: normal;
+    padding-right: 10px;
+}
+.file .file_set_left_right>div>span{
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    margin-right: 15px;
+}
+.file .file_set_left_right>div>input{
+    width: 50px;
+    box-sizing: border-box;
+    padding: 2px;
+    border: 1px solid #898989;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.file .file_set_left_right>div>b.total{
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    font-size: 24px;
+    color: #39b9a2;
+}
+.file .file_No_padding{
+    padding: 0 0 0 20px !important;
+}
+
+
+.file .file_set_right{
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #fff;
+}
+
+
+
+
+
+
+/*右边*/
+.file .file_right_get{
+    margin-top: 30px;
+}
+.file .file_right_get h4{
+    padding: 10px 0 10px 5px;
+    color: #ffffff;
+    background-color: #454545;
+    border-top-left-radius: 5px;  
+    border-top-right-radius: 5px;
+    font-size: 16px;
+}
+.file .file_right_get>div{
+    background-color: #fafafa;
+    padding: 15px;
+    border-left: 1px solid #e1e8ed;
+    border-right: 1px solid #e1e8ed;
+    border-bottom: 1px solid #e1e8ed;
+    font-size: 20px;
+    color: #787878;
+}
+.file .file_right_get ul{
+    margin: 20px 0 20px 20px;
+}
+.file .file_right_get ul li{
+    list-style: disc;
+}
+
+
+
+
+
+
+
+

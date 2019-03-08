@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.realdoer.dao.FollowMapper">
+
+    <insert id="save">
+        INSERT INTO
+            follow (
+                user_id, follower_id
+            )
+        VALUES (
+            #{authorId}, #{userId}
+        )
+    </insert>
+    
+    <select id="listFollower" resultType="java.lang.Integer">
+        SELECT
+            follower_id
+        FROM
+            follow
+        WHERE
+            user_id = #{authorId}
+    </select>
+    
+    <select id="listFollowing" resultType="java.lang.Integer">
+        SELECT
+            user_id
+        FROM
+            follow
+        WHERE
+            follower_id = #{userId}
+    </select>
+    
+    <delete id="remove">
+        DELETE FROM
+            follow
+        WHERE
+            follower_id = #{userId} 
+        AND
+            user_id = #{authorId} 
+    </delete>
+    
+</mapper>

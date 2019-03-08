@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.realdoer.dao.CompatibleScriptMapper">
+
+    <resultMap type="top.realdoer.constant.ScriptEnum" id="compatibleScript">
+        <constructor>
+            <idArg column="script"/>
+        </constructor>
+    </resultMap>
+    
+    <select id="list" resultMap="compatibleScript" >
+        SELECT
+            script
+        FROM
+            compatible_script
+        WHERE
+            item_id = #{webTemplateItemId}
+    </select>
+    
+    <insert id="save">
+        INSERT INTO
+            compatible_script (
+                item_id, script
+            )
+        VALUES (
+            #{webTemplateId}, #{scriptEnum}
+        )
+    </insert>
+    
+    <insert id="saveList">
+        INSERT INTO
+            compatible_script (
+                item_id, script
+            )
+        VALUES
+            <foreach collection="scriptEnums" item="scriptEnum" separator=",">
+                (#{webTemplateId}, #{scriptEnum})
+            </foreach>
+    </insert>
+    
+</mapper>

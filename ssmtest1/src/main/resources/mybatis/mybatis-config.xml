@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="properties/db.properties"></properties>
+
+	<settings>
+		<!-- 设置日志提供厂商 -->
+		<setting name="logImpl" value="LOG4J" />
+		<!-- 下划线转驼峰命名, 数据库字段 last_name 映射为 bean 属性 lastName -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- mybatis 3.4.2 以后的版本此项默认为 true, name=入参参数名 -->
+		<setting name="useActualParamName" value="true" />
+		<!-- 延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 -->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!-- 侵入式懒加载, 当开启时，任何方法的调用都会加载该对象的所有属性。否则，每个属性会按需加载 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+		<!-- 全局二级缓存配置, 默认 true -->
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+
+	<typeHandlers>
+		<typeHandler handler="top.realdoer.custom.MyBatisEnumConverter"
+			javaType="top.realdoer.constant.BrowerEnum" jdbcType="TINYINT" />
+		<typeHandler handler="top.realdoer.custom.MyBatisEnumConverter"
+			javaType="top.realdoer.constant.FileTypeEnum" jdbcType="TINYINT" />
+		<typeHandler handler="top.realdoer.custom.MyBatisEnumConverter"
+			javaType="top.realdoer.constant.ScriptEnum" jdbcType="TINYINT" />
+		<typeHandler handler="top.realdoer.custom.MyBatisEnumConverter"
+			javaType="top.realdoer.constant.ItemType" jdbcType="TINYINT" />
+	</typeHandlers>
+
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<property name="param1" value="value1" />
+		</plugin>
+	</plugins>
+</configuration>

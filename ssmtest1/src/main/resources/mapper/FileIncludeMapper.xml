@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.realdoer.dao.FileIncludeMapper">
+    
+    <resultMap type="top.realdoer.constant.FileTypeEnum" id="fileInclude">
+        <constructor>
+            <idArg column="detail"/>
+        </constructor>
+    </resultMap>
+    
+    <select id="list" resultMap="fileInclude">
+        SELECT
+            detail
+        FROM
+            file_include
+        WHERE
+            item_id = #{itemId}
+    </select> 
+    
+    <insert id="save">
+        INSERT INTO
+            file_include (
+                item_id, detail
+            )
+        VALUES (
+            #{itemId}, #{fileType}
+        )
+    </insert>
+    
+    <insert id="saveList">
+        INSERT INTO
+            file_include (
+                item_id, detail
+            )
+        VALUES
+            <foreach collection="fileTypes" item="fileType" separator=",">
+                (#{itemId}, #{fileType})
+            </foreach>
+    </insert>
+</mapper>

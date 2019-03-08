@@ -1,0 +1,428 @@
+/******************************作者*******************************/
+
+.author{
+    border-bottom: 1px solid #e1e8ed;
+    margin-bottom: 50px;
+}
+.author_up{
+    background: url(../images/author_back.png);
+    background-size: 600px;
+}
+.author_container{
+    width: 1024px;
+    margin: 0 auto;
+}
+.author .author_up_left,.author .author_up_body,.author .author_up_right{
+    display: inline-block;
+    padding: 30px 0;
+}
+.author .author_up_left{
+    width: 80px;
+}
+.author .author_up_left>div>img{
+    width: 80px;
+}
+.author .author_up_body,.author .author_up_right{
+    width: 472px;
+    vertical-align: top;
+}
+.author .author_up_body{
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.author .author_up_body h2{
+    margin: 4px 0;
+    font-size: 22px;
+    color: #454545;
+}
+.author .author_up_body p{
+    color: #666666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.author .author_up_body button{
+    padding: 3px 12px;
+    border: 1px solid #82b440;
+    border-radius: 3px;
+    color: #82b440;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 300;
+}
+.author .author_up_body button:hover{
+    color: #ffffff;
+    background-color: #82b440;
+}
+.author .author_up_body div button.hover{
+    color: #ffffff;
+    background-color: #82b440;
+}
+.author .author_up_right>div{
+    text-align: right;
+}
+.author .author_up_right>div>div{
+    display: inline-block;
+    margin-left: 30px;
+    overflow: hidden;
+}
+.author .author_up_right>div>div>div>strong{
+    color: #666666;
+    font-size: 18px;
+    font-weight: normal;
+    display: inline-block;
+    line-height: 50px;
+}
+.author .author_up_right>div>div>div>div>span{
+    line-height: 30px;
+}
+.author .author_up_right>div>div>div.rating>div{
+    display: inline-block;
+}
+/****************星星*****************/
+.author .author_up_right>div>div>div>div.star_rating b{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url(../images/star.png);
+    background-position: 0px 0px;
+}
+.author .author_up_right>div>div>div>div>span.author_rating{
+    font-size: 12px;
+    vertical-align: bottom;
+}
+.author .author_up_right>div>div>div>div>span.author_Sales{
+    font-size: 20px;
+    font-weight: 600;
+}
+/*tab键切换*/
+.author_tab button{
+    height: 35px;
+    padding: 10px 10px;
+    font-size: 12px;
+    line-height: 16px;
+    border: none;
+    background-color: transparent;
+    color: #666666;
+    cursor: pointer;
+}
+.author_tab button i{
+    font-style: normal;
+    padding: 2px;
+    display: inline-block;
+    width: 14px;
+    vertical-align: top;
+    background-color: #666666;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 2px;
+    margin-left: 5px;
+}
+.author_tab button:hover{
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    background-color: #e0e0e0;
+}
+.author_tab button.active{
+    background-color: #ffffff;
+    border-top: 1px solid #e1e8ed;
+    border-left: 1px solid #e1e8ed;
+    border-right: 1px solid #e1e8ed;
+    position: relative;
+    top: 2px;
+    border-radius: 2px;
+    color: #000000;
+    font-weight: 500;
+}
+
+/*Tab切换*/
+
+/*.tab_1>div{
+    box-sizing: border-box;
+    padding: 15px;
+}*/
+.tab_1,.tab_2,.tab_3{
+    overflow: hidden;
+    margin-top: 100px;
+    opacity: 0;
+}
+.tab_left{
+    float: left;
+    width: 75%;
+    background-color: #f5f5f5;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.tab_1 .tab_right{
+    float: right;
+    width: 20%;
+}
+/********************三个Tab布局******************/
+.tab1_model,.tab2_model,.tab3_model{
+    display: flex;
+    border-bottom: 1px solid #e1e8ed;
+    box-sizing: border-box;
+    padding: 15px;
+}
+/*******.tabs共用*********/
+.tabs div.media_left{
+    width: 48%;
+    display: flex;
+}
+.tab1_model div.media_left div p{
+    border: 1px solid #b9b9b9;
+    background-color: #ffffff;
+    width: 75px;
+    padding-left: 3px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+/*******.tabs共用*********/
+.tabs div.media_left div.media_left_right h3{
+   padding-left: 15px;
+   font-size: 18px;
+   line-height: 20px;
+}
+.tabs div.media_left div.media_left_right p{
+   padding-left: 15px;
+   padding-top: 10px;
+   font-size: 12px;
+}
+.tab1_model div.media_left div.media_left_right a{
+   padding-left: 15px;
+   font-size: 14px;
+   color: #00719b;
+   margin-top: 26px;
+}
+.tab1_model div.media_left div.media_left_right a:hover{
+    text-decoration: underline;
+}
+.tab1_model div.media_left div p i{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    padding: 5px 2px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.tab1_model div.media_left div p i.tab_like{
+    background: url(../images/tab_like.png) center center / 18px no-repeat;
+}
+.tab1_model div.media_left div p i.tab_package{
+    background: url(../images/tab_package.png) center center / 18px no-repeat;
+}
+.tab1_model div.media_left div p i.tab_shop{
+    background: url(../images/tab_shop.png) center center / 18px no-repeat;
+}
+/*******.tabs共用*********/
+.tabs div.media_body{
+    width: 34%;
+}
+.tabs div.media_body p{
+    font-size: 12px;
+    color: #666666;
+    line-height: 20px;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.tabs div.media_right{
+    width: 18%;
+}
+.tabs div.media_right>div{
+    text-align: center;
+}
+.tabs div.media_right>div>strong{
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 36px;
+    margin-bottom: 10px;
+}
+.tab1_model div.media_right>div>i{
+    display: block;
+    width: 100%;
+    height: 20px;
+    background: url(../images/Sale.png) center center / 20px no-repeat;
+    margin-bottom: 10px;
+}
+/*******.tabs共用*********/
+.tabs div.media_right>div>span{
+    display: block;
+    font-size: 14px;
+    color: #666666;
+}
+
+/*右边内容*/
+.tab_1 .tab_right{
+    /*position: fixed;*/
+}
+.tab_1 .tab_right .tab_search,.tab_1 .tab_right .tab_about,.tab_1 .tab_right .tab_contact{
+    margin-bottom: 20px;
+}
+.tab_1 .tab_right .tab_search h4,.tab_1 .tab_right .tab_about h4,.tab_1 .tab_right .tab_contact h4{
+    padding: 10px 0 10px 5px;
+    color: #ffffff;
+    background-color: #454545;
+    border-top-left-radius: 5px;  
+    border-top-right-radius: 5px;
+    font-size: 16px;
+}
+.tab_1 .tab_right .tab_search div,.tab_1 .tab_right .tab_about div,.tab_1 .tab_right .tab_contact div{
+    background-color: #fafafa;
+    padding: 15px;
+    border-left: 1px solid #e1e8ed;
+    border-right: 1px solid #e1e8ed;
+    border-bottom: 1px solid #e1e8ed;
+}
+.tab_1 .tab_right .tab_search div input {
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 30px;
+    background-color: #ffffff;
+    border: 1px solid #a8a8a8;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 0 15px 0 5px;
+    background-image: url(../images/search.jpg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 145px center;
+}
+.tab_1 .tab_right .tab_about a{
+    color: #454545;
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+    text-align: center;
+    width: 80px;
+    margin: 0 auto;
+}
+.tab_1 .tab_right .tab_about a:hover{
+    color: #217199;
+}
+.tab_1 .tab_right .tab_contact div p{
+    font-size: 14px;
+    line-height: 30px;
+}
+
+/*第二、三个Tab页*/
+.tab2_model>div.media_left>div>p>button,.tab3_model>div.media_left>div>p>button{
+    width: 80px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 200;
+    background-color: #d7d7d7;
+    border: none;
+    border-radius: 5px;
+    color: #454545;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.tab2_model>div.media_left>div>p>button:hover,.tab3_model>div.media_left>div>p>button:hover{
+    color: #ffffff;
+    background-color: #82b440;
+}
+.tab2_model>div.media_body,.tab3_model>div.media_body{
+    padding-top: 15px;
+}
+.tab2_model>div.media_right>div>strong,.tab3_model>div.media_right>div>strong{
+    display: block;
+}
+/*******Tab里的星星*******/
+.tab2_model div.tab2_star,.tab3_model div.tab3_star{
+    overflow: hidden;
+}
+.tab2_model div.star_rating,.tab3_model div.star_rating{
+    margin: 20px 0 10px 0;
+}
+.tab2_model div.star_rating b,.tab3_model div.star_rating b{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: url(../images/star.png);
+    background-position: 0px 0px;
+}
+/****************点击切换***************/
+
+#tabs>div.tab_2,#tabs>div.tab_3{
+    display: none;
+}
+
+/****************点击切换***************/
+
+
+
+/*****分页效果*****/
+
+#tab1_page,#tab2_page,#tab3_page{
+    width: 101%;
+    position: relative;
+    left: -1px;
+    /*盖住两边的边框*/
+    background-color: #ffffff;
+    padding: 30px 0;
+    text-align: center;
+}
+#tab1_page a,#tab2_page a,#tab3_page a{
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 40px;
+    color: #454545;
+}
+#tab1_page a:hover,#tab2_page a:hover,#tab3_page a:hover{
+    background-color: #e1e8ed;
+    border-radius: 5px;
+    color: #454545;
+}
+#tab1_page .active_page,#tab2_page .active_page,#tab3_page .active_page{
+    background-color: #ededed;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    color: #000000;
+}
+#tab1_page .prev,#tab1_page .next,#tab2_page .prev,#tab2_page .next,#tab3_page .prev,#tab3_page .next{
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+}
+/*****分页效果*****/
+/******************************作者*******************************/
+
+
+
+
+
+.header-bar:after{
+    clear: both;
+    content: "";
+    display: block;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.user{
+    position: relative;
+    float: none;
+    height: 100px;
+}
+.user:hover{
+    cursor: pointer;
+}
+.user:hover .exit{
+    display: block;
+}
+.exit{
+    color: transparent;
+    position: absolute;
+    display: none;
+    width: 100px;
+    text-align: center;
+    top: 0px;
+    left: 50%;
+    margin-left: -50px;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+
