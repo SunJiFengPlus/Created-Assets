@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import top.realdoer.constant.ResultEnum;
 import top.realdoer.dto.Result;
-import top.realdoer.exception.AuthorizationException;
-import top.realdoer.exception.ExternalAPIException;
-import top.realdoer.exception.ParamErrorException;
-import top.realdoer.exception.ServiceException;
+import top.realdoer.exception.*;
 
 /**
  * 全局异常处理器, 仅处理目标方法执行产生的异常, 不会处理拦截器中的异常
@@ -35,11 +32,25 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * DAO 层执行异常
+     * MyBatis 执行异常
      */
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({ DataAccessException.class })
     public Result handleDataAccessException(Exception e) {
+        ResultEnum res = ResultEnum.DATABASE_ERROR;
+        res.setResultMessage(res.getResultMessage() + ": " +  e.getCause().getMessage());
+        return new Result.Builder()
+                .buildResult(res)
+                .build();
+    }
+
+    /**
+     * DAO 层其他异常
+     * DaoException ∪ DataAccessException = 全部 DAO 层异常
+     */
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler({ DaoException.class })
+    public Result handleDAOException(Exception e) {
         ResultEnum res = ResultEnum.DATABASE_ERROR;
         res.setResultMessage(res.getResultMessage() + ": " +  e.getCause().getMessage());
         return new Result.Builder()

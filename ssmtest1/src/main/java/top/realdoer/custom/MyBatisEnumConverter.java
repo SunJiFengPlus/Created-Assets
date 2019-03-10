@@ -10,6 +10,7 @@ import org.apache.ibatis.type.JdbcType;
 
 import io.jsonwebtoken.lang.Assert;
 import top.realdoer.constant.BaseMyBatisConvertEnum;
+import top.realdoer.exception.DaoException;
 
 /**
  * MyBatis 枚举类型转换器
@@ -39,32 +40,32 @@ public class MyBatisEnumConverter<E extends BaseMyBatisConvertEnum<?, ?>> extend
     @Override
     public E getNullableResult(ResultSet rs, String columnName) throws SQLException {
         Integer key = rs.getInt(columnName);
-        return key == null? null: getValue(key);
+        return getValue(key);
     }
 
     @Override
     public E getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
         Integer key = rs.getInt(columnIndex);
-        return key == null? null: getValue(key);
+        return getValue(key);
     }
 
     @Override
     public E getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         Integer key = cs.getInt(columnIndex);
-        return key == null? null: getValue(key);
+        return getValue(key);
     }
 
     /**
      * 枚举类型转换，由于构造函数获取了枚举的子类enums，让遍历更加高效快捷
-     * @param value 数据库中存储的自定义value属性
+     * @param key 数据库中存储的键
      * @return value对应的枚举类
      */
-    private E getValue(Integer key) {
+    private E getValue(Integer key) throws DaoException {
         Byte byteKey;
         try {
             byteKey = new Byte(key.toString());
         } catch (Exception e) {
-            throw new ClassCastException("不能进行的类型转换: 将 " + key + " 转换为 " + Byte.class.getName());
+            throw new DaoException("不能进行的类型转换: 将 " + key + " 转换为 " + Byte.class.getName());
         }
         
         for (E e : enums) {
@@ -72,6 +73,6 @@ public class MyBatisEnumConverter<E extends BaseMyBatisConvertEnum<?, ?>> extend
                 return e;
             }
         }
-        throw new IllegalArgumentException("未知的枚举类型：" + key + ",请核对" + type.getSimpleName());
+        throw new DaoException("未知的枚举类型：" + key + ",请核对" + type.getSimpleName());
     }
 }
