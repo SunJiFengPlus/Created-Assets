@@ -1,14 +1,12 @@
 package top.realdoer.controller;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +20,10 @@ import top.realdoer.query.RegistUser;
 import top.realdoer.service.UserService;
 import top.realdoer.util.JWTUtil;
 
+/**
+ * @author 孙继峰
+ * @date 2019/03/11
+ */
 @RestController
 public class UserController {
     // TODO: 完善文档注释
@@ -65,24 +67,19 @@ public class UserController {
     /**
      * 注册
      * @throws ServiceException service 层执行异常
-     * @throws InvocationTargetException 
-     * @throws IllegalAccessException 
-     * @throws ParamErrorException 
+     * @throws ParamErrorException
      * TODO: AOP 切入进行参数验证
      */
     @PostMapping("/register")
-    public Result register(@Valid RegistUser registUser, BindingResult result, 
+    public Result register(@Valid RegistUser registUser, BindingResult result,
             HttpSession session) throws Exception {
-        if (result.hasErrors()) {
-            throw new ParamErrorException(ResultEnum.PARAM_INCORRECT);
-        }
         String verificationCode = (String) session.getAttribute(SmsController.VER_CODE_KEY);
         if (verificationCode == null || !verificationCode.equals(registUser.getVerificationCode())) {
             throw new ParamErrorException(ResultEnum.VER_CODE_NOT_AVAILABLE);
         }
         
         User user = new User();
-        BeanUtils.copyProperties(user, registUser);
+        BeanUtils.copyProperties(registUser, user);
         userService.saveUser(user);
         String token = JWTUtil.build(String.valueOf(user.getUserId()));
         
@@ -94,16 +91,14 @@ public class UserController {
     
     /**
      * 登陆
-     * FIXME: 登陆逻辑错误导致密码不正确也会签发鉴权信息 (Service 层)
+     * TODO: AOP 切入进行参数验证
      * @return 序列化的数据传输对象
      * @throws ServiceException service 层执行异常
-     * @throws InvocationTargetException 
-     * @throws IllegalAccessException 
      */
     @PostMapping("/login")
-    public Result login(@RequestBody LoginUser loginUser) throws Exception {
+    public Result login(@Valid LoginUser loginUser, BindingResult result) throws Exception {
         User user = new User();
-        BeanUtils.copyProperties(user, loginUser);
+        BeanUtils.copyProperties(loginUser,user);
         Integer userId = userService.login(user.getPhone(), user.getPassword());
         String token = JWTUtil.build(String.valueOf(userId));
         

@@ -46,7 +46,7 @@
             var verificationCode = $(".num").val();
             var password = $(".password").val();
             var storage=window.localStorage;
-            alert(username + phone + verificationCode + password);
+            // alert(username + phone + verificationCode + password);
             // console.log(username);
             // console.log(password);
             $.ajax({
@@ -82,7 +82,7 @@
         //获取验证码
         $("#verificationCode").click(function(){
             var tel = $(".tel").val();
-            alert(tel);
+            // alert(tel);
             $.ajax({
                 url: 'http://localhost:8080/ssmtest1/sms-regist/' + tel,
                 type: 'get'
@@ -129,7 +129,7 @@
             alert('用户名不能为空');
             $(this).data('d',0);
         }else if( !(/^[\u4e00-\u9fff\w]{4,16}$/.test(this.value)) ){
-            alert('用户名格式错误，4到16位');
+            // alert('用户名格式错误，4到16位');
             $(this).data('d',0);
         }else{
             $(this).data('d',1);

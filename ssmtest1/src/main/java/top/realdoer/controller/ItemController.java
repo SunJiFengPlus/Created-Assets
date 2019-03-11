@@ -1,7 +1,6 @@
 package top.realdoer.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,17 +25,15 @@ import top.realdoer.util.JWTUtil;
  * 项目 Controller, 用于处理没有指定项目类型项目的请求
  * 由于没有写鉴权拦截器, 鉴权处理需要放在第一行. 原因: 鉴权拦截器会解析鉴权信息, 在目标方法中也会检查鉴权信息,
  * 两次鉴权检查操作影响效率, 且在拦截器中鉴权出的异常不会被全局异常处理器处理
- *  
+ * TODO: Interceptor 参数合法验证
+ * TODO: AOP: 日志
+ * TODO: 异步编程
+ * TODO: REST API 设计
+ * TODO: 设计异常 如果与业务功能相关的异常，建议在service中抛出异常。  与业务功能没有关系的异常，建议在controller中抛出。
+ * TODO: 权限收束 能 private 就不 public
  * @author 孙继峰 
  * @date 2018/12/05
  */
-// TODO: Interceptor 参数合法验证
-// TODO: AOP: 日志
-// TODO: 异步编程
-// TODO: 限流
-// TODO: REST API 设计
-// TODO: 设计异常 如果与业务功能相关的异常，建议在service中抛出异常。  与业务功能没有关系的异常，建议在controller中抛出。
-// TODO: 权限收束 能 private 就不 public 
 @RestController
 @PropertySource("classpath:properties/server.properties")
 public class ItemController {
@@ -120,7 +116,7 @@ public class ItemController {
         file.transferTo(fullFileName);
         
         // 服务器地址路径: https://realdoer.top/ssmtest1/WEB-INF/temp/{userId}/1547797152242.png
-        StringBuffer serverPathBuilder = new StringBuffer(request.getScheme())
+        StringBuffer serverPath = new StringBuffer(request.getScheme())
                 .append("://").append(address)
                 .append(useDefaultPort ? "" : ":" + request.getServerPort())
                 .append(request.getContextPath())
@@ -128,7 +124,7 @@ public class ItemController {
                 .append(uploadDate).append(suffix);
 
         return new Result.Builder()
-                .buildPath(serverPathBuilder.toString())
+                .buildPath(serverPath.toString())
                 .buildResult(ResultEnum.SUCCESS)
                 .build();
     }
@@ -157,7 +153,7 @@ public class ItemController {
  *          ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░     
  *          ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░     T  O  D  O  过  多
  *          ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░     
- *          ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒░     女   人    唱    歌    男   人    改    B  U  G
+ *          ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒░     女  人  唱  歌  男   人    改    B  U  G
  *          ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐     
  *          ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄     希   望    の    花
  *          ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒

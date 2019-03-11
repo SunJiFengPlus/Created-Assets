@@ -1,9 +1,7 @@
 package top.realdoer.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.bind.annotation.RestController;
 import top.realdoer.sdk.vaptcha.Entity;
@@ -20,8 +18,7 @@ public class VaptchaController {
 
     @GetMapping("/vaptcha")
     public String getVaptcha(){
-        String challenge = vaptcha.getChallenge(null);
-        return challenge;
+        return vaptcha.getChallenge(null);
     }
 
     @PostMapping("/vaptcha-down")
@@ -36,9 +33,7 @@ public class VaptchaController {
      * @param entity(challenge,token)
      * 这里前端是通过formdata的数据发送的，所以接受参数的时候可以不用注解
      * 如果是payload里面需要用@requestBody的方式接收，写过springmvc都知道吧
-     * @return
      */
-//    @PostMapping("/login")
     // TODO: 与登陆模块耦合
     public String login(Entity entity){
         Boolean status = vaptcha.validate(entity.getChallenge(),entity.getToken(),null);
