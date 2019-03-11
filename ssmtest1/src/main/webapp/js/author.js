@@ -107,7 +107,7 @@ $(function(){
 	});
 
 	$.ajax({
-			url: 'https://realdoer.top/ssmtest1/user/listFollower/1000',
+			url: 'http://localhost:8080/ssmtest1/follower/1000',
 			type: 'get',
 			headers: {
 	            'Authorization' : window.localStorage.s
@@ -159,11 +159,5 @@ $(function(){
 				alert('error');
 			}
 		});
-
 console.log(window.localStorage.s);
-
-
-
-
-
 });

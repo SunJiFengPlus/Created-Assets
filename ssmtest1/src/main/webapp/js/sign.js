@@ -2,26 +2,27 @@
 
         // 登录
         $("#login").click(function(){
-            var username = $(".username").val();
-            var password = $(".password").val();
+            var username = $(".phone").val();
+            var password = $(".pw").val();
             var storage=window.localStorage;
-            // console.log(username);
-            // console.log(password);
+            alert(password);
+            console.log(username);
+            console.log(password);
             $.ajax({
-                url: 'https://result.eolinker.com/7BFU6nc631a2e499d67c963e091c0f61b02f00bd2e2801c?uri=/login',
+                url: 'http://localhost:8080/ssmtest1/login',
                 type: 'post',
-                data: {"username":username,"password":password},
+                data: {"phone":username,"password":password},
                 success: function(msg){
-                    if(msg.status == 'OK'){
+
+                    if(msg.result == "Success"){
                         // alert('成功');
                         // console.log(msg.token);
                         // alert(msg.token);
 
-                       if(!window.localStorage){
+                        if(!window.localStorage){
                             alert("浏览器支持localstorage");
                             return false;
                         }else{
-                            
                             storage.s = msg.token;
                             storage.username = username;
                         }
@@ -34,7 +35,7 @@
                 error: function(){
                     alert('用户名或密码错误！');
                 }
-                
+
             });
         });
         
@@ -49,11 +50,11 @@
             // console.log(username);
             // console.log(password);
             $.ajax({
-                url: 'http://realdoer.top/ssmtest1/register',
+                url: 'http://localhost:8080/ssmtest1/register',
                 type: 'post',
                 data: {"username":username,"phone":phone,"verificationCode":verificationCode,"password":password},
                 success: function(msg){
-                    if(msg.status == 'OK'){
+                    if(msg.result == "Success"){
                         // alert('成功');
                         // console.log(msg.token);
                         // alert(msg.token);
@@ -62,7 +63,6 @@
                             alert("浏览器支持localstorage");
                             return false;
                         }else{
-                            
                             storage.s = msg.token;
                             storage.username = username;
                         }
@@ -84,7 +84,7 @@
             var tel = $(".tel").val();
             alert(tel);
             $.ajax({
-                url: 'http://realdoer.top/ssmtest1/sms-regist/' + tel,
+                url: 'http://localhost:8080/ssmtest1/sms-regist/' + tel,
                 type: 'get'
             });
             var timer = null;
@@ -168,7 +168,7 @@
             var username = $('input[name=register_name]').val();
             var password = $('input[name=register_password]').val();
             $.ajax({
-                url: 'http://39.105.99.101:8080/ssmtest1/user/register',
+                url: 'http://localhost:8080/ssmtest1/register',
                 type: 'post',
                 data: {'username':username,'password':password},
                 success: function(msg){

@@ -97,10 +97,11 @@ public  class Vaptcha {
      * @return 二次验证是否成功
      */
     public Boolean validate(String challenge, String token, String sceneId) {
-        if (!isDown && !stringIsEmpty(challenge))
+        if (!isDown && !stringIsEmpty(challenge)) {
             return normalValidate(challenge, token, sceneId);
-        else
+        } else {
             return downTimeValidate(token);
+        }
     }
 
     /**
@@ -162,8 +163,9 @@ public  class Vaptcha {
 
     private String getSignature(long time) {
         long now = System.currentTimeMillis();
-        if ((now - time) > VaptchaConfig.RequestAbateTime)
+        if ((now - time) > VaptchaConfig.RequestAbateTime) {
             return null;
+        }
         String signature = md5Encode(now + key);
         return "{" + String.format(
                 "\"time\":\"%s\",\"signature\":\"%s\"", now, signature) + "}";
@@ -171,18 +173,21 @@ public  class Vaptcha {
 
     private String downTimeCheck(long time1, long time2, String signature, String captcha) {
         long now = System.currentTimeMillis();
-        if ((now - time1) > VaptchaConfig.RequestAbateTime || !signature.equals(md5Encode(time2 + key)))
+        if ((now - time1) > VaptchaConfig.RequestAbateTime || !signature.equals(md5Encode(time2 + key))) {
             return "{" + String.format(
                     "\"result\":\"%s\"", false) + "}";
-        if (now - time2 < VaptchaConfig.ValidateWaitTime)
+        }
+        if (now - time2 < VaptchaConfig.ValidateWaitTime) {
             return "{" + String.format(
                     "\"result\":\"%s\"", false) + "}";
+        }
         String trueCaptcha = md5Encode(time1 + key).substring(0, 3);
-        if (trueCaptcha.equalsIgnoreCase(captcha))
+        if (trueCaptcha.equalsIgnoreCase(captcha)) {
             return "{" + String.format(
                     "\"result\":true,\"token\":\"%s\"", now + "," + md5Encode(now + key + "vaptcha")) + "}";
-        else
+        } else {
             return "{\"result\":false}";
+        }
     }
 
     private Boolean normalValidate(String challenge, String token, String sceneId) {
@@ -216,14 +221,14 @@ public  class Vaptcha {
             long time = Long.parseLong(strs[0]);
             String signature = strs[1];
             long now = System.currentTimeMillis();
-            if (now - time > VaptchaConfig.ValidatePassTime)
+            if (now - time > VaptchaConfig.ValidatePassTime) {
                 return false;
-            else {
+            } else {
                 String signatureTrue = md5Encode(time + key + "vaptcha");
                 if (signatureTrue.equalsIgnoreCase(signature)) {
-                    if (passedSignatures.contains(signature))
+                    if (passedSignatures.contains(signature)) {
                         return false;
-                    else {
+                    } else {
                         passedSignatures.add(signature);
                         if (passedSignatures.size() >= VaptchaConfig.MaxLength) {
                             passedSignatures.subList(0, passedSignatures.size() - VaptchaConfig.MaxLength + 1).clear();
