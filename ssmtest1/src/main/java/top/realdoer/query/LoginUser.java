@@ -10,8 +10,9 @@ import lombok.Data;
  * @date 2019年2月17日
  */
 @Data
-@NotBlank
 public class LoginUser {
+    @NotBlank(message = "电话号码不能为空")
     String phone;
+    @NotBlank(message = "密码不能为空")
     String password;
 }
