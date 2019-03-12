@@ -11,8 +11,8 @@ import lombok.Data;
  */
 @Data
 public class LoginUser {
-    @NotBlank(message = "电话号码不能为空")
+    @NotBlank
     String phone;
-    @NotBlank(message = "密码不能为空")
+    @NotBlank
     String password;
 }

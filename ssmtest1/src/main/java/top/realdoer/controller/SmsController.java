@@ -2,8 +2,10 @@ package top.realdoer.controller;
 
 
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -30,8 +32,8 @@ public class SmsController {
     static final String VER_CODE_KEY = "verificationCode";
 
     @GetMapping("/sms-login/{phone}")
-    public Result sendLoginSms(@PathVariable("phone") String phone, HttpSession session) 
-            throws ExternalAPIException {
+    public Result sendLoginSms(@PathVariable("phone") @NotNull String phone, BindingResult result,
+                               HttpSession session) throws ExternalAPIException {
         String verificationCode = VerifyCodeUtil.generateVerCode();
         session.setAttribute(VER_CODE_KEY, verificationCode);
         sms.sendLoginSms(verificationCode, phone);
@@ -42,8 +44,8 @@ public class SmsController {
     }
     
     @GetMapping("/sms-regist/{phone}")
-    public Result sendRegisterSms(@PathVariable("phone") String phone, HttpSession session)
-            throws ExternalAPIException {
+    public Result sendRegisterSms(@PathVariable("phone") @NotNull String phone, BindingResult result,
+                                  HttpSession session) throws ExternalAPIException {
         String verificationCode =  VerifyCodeUtil.generateVerCode();
         session.setAttribute(VER_CODE_KEY, verificationCode);
         System.out.println(verificationCode);

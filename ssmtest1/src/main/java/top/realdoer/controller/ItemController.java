@@ -4,10 +4,13 @@ import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,7 +26,7 @@ import top.realdoer.util.JWTUtil;
 
 /**
  * 项目 Controller, 用于处理没有指定项目类型项目的请求
- * 由于没有写鉴权拦截器, 鉴权处理需要放在第一行. 原因: 鉴权拦截器会解析鉴权信息, 在目标方法中也会检查鉴权信息,
+ * 由于没有写鉴权拦截器, 鉴权处理需要放在第一行. 原因: 鉴权拦截器会解析鉴权信息, 在目标方法中也需要检查鉴权信息,
  * 两次鉴权检查操作影响效率, 且在拦截器中鉴权出的异常不会被全局异常处理器处理
  * TODO: Interceptor 参数合法验证
  * TODO: AOP: 日志
@@ -31,7 +34,8 @@ import top.realdoer.util.JWTUtil;
  * TODO: REST API 设计
  * TODO: 设计异常 如果与业务功能相关的异常，建议在service中抛出异常。  与业务功能没有关系的异常，建议在controller中抛出。
  * TODO: 权限收束 能 private 就不 public
- * @author 孙继峰 
+ *
+ * @author 孙继峰
  * @date 2018/12/05
  */
 @RestController
@@ -39,35 +43,37 @@ import top.realdoer.util.JWTUtil;
 public class ItemController {
     @Autowired
     ItemService service;
-    
+
     /**
-     *  服务器地址
+     * 服务器地址
      */
     @Value("${address}")
     private String address;
-    
+
     /**
-     *  临时文件夹位置
+     * 临时文件夹位置
      */
     @Value("${temp_dir}")
     private String serverTempPath;
-    
+
     /**
      * 使用默认的端口号
      */
     @Value("${use_default_port}")
     private Boolean useDefaultPort;
-    
+
     /**
      * 分页返回作者上传的项目集合
+     *
      * @param authorId 作者 id
      * @return 返回作者上传项目集合的数据传输对象
      */
     @GetMapping("/portfolio/{authorId}")
-    public Result listPortfolio(@PathVariable("authorId") Integer authorId, ItemFilter filter) throws Exception {
+    public Result listPortfolio(@PathVariable("authorId") @NotNull Integer authorId,
+                                BindingResult result, ItemFilter filter) throws Exception {
         List<Item> items = service.listPortfolio(authorId, filter);
         int[] navigatePages = new PageInfo<>(items, filter.getMaxNumPerPage()).getNavigatepageNums();
-        
+
         return new Result.Builder()
                 .buildData(items)
                 .buildCurrentIndex(filter.getIndex())
@@ -78,13 +84,15 @@ public class ItemController {
 
     /**
      * 不指定项目类型时, 返回一个项目
+     *
      * @param itemId 项目 id
      * @return 返回一个项目
      */
     @GetMapping("/item/{itemId}")
-    public Result getItem(@PathVariable("itemId") Integer itemId) throws Exception {
+    public Result getItem(@PathVariable("itemId") @NotNull Integer itemId,
+                          BindingResult result) throws Exception {
         Item item = service.getItem(itemId);
-        
+
         return new Result.Builder()
                 .buildData(item)
                 .buildResult(ResultEnum.SUCCESS)
@@ -94,12 +102,13 @@ public class ItemController {
     /**
      * 用户上传临时文件
      * TODO: 项目存放位置更改, 需要改目录
+     *
      * @param file 上传的文件
      * @return 文件在服务器中的临时地址
      */
     @PostMapping("/upload")
     public Result uploadHtmlTemplate(MultipartFile file, HttpServletRequest request) throws Exception {
-        String userId = (String)JWTUtil.getPayloadDetail(request, Claims.ID);
+        String userId = (String) JWTUtil.getPayloadDetail(request, Claims.ID);
         // 文件名: asdasd.png
         String simpleFileName = file.getOriginalFilename();
         // 后缀名: .png
@@ -114,7 +123,7 @@ public class ItemController {
         // 全文件名: F:\workspace\.metadata\.me_tcat85\webapps\ssmtest1\WEB-INF\temp\{userId}\1547797152242.png
         File fullFileName = new File(destDir + "/" + uploadDate + suffix);
         file.transferTo(fullFileName);
-        
+
         // 服务器地址路径: https://realdoer.top/ssmtest1/WEB-INF/temp/{userId}/1547797152242.png
         StringBuffer serverPath = new StringBuffer(request.getScheme())
                 .append("://").append(address)
@@ -128,19 +137,21 @@ public class ItemController {
                 .buildResult(ResultEnum.SUCCESS)
                 .build();
     }
-    
+
     /**
      * 删除项目
+     *
      * @param itemId 项目 id
      * @return 执行结果
      */
     @DeleteMapping("/item/{itemId}")
-    public Result deleteItem(@PathVariable("itemId") Integer itemId, HttpServletRequest request) throws Exception {
+    public Result deleteItem(@PathVariable("itemId") @NotNull Integer itemId, BindingResult result,
+                             HttpServletRequest request) throws Exception {
         // TODO: Object 强转 Integer 会抛类型转换异常??? 还需要先转换为 String 再转 Integer???
         String id = (String) JWTUtil.getPayloadDetail(request, Claims.ID);
         Integer userId = Integer.valueOf(id);
         service.removeItem(itemId, userId);
-        
+
         return new Result.Builder()
                 .buildResult(ResultEnum.SUCCESS)
                 .build();
@@ -150,11 +161,11 @@ public class ItemController {
 /*
  *          ░░░░░░░░░▐█░░░░░░░░░░░▄▀▒▌░
  *          ░░░░░░░░▐▀▒█░░░░░░░░▄▀▒▒▒▐░     问  题  C  O  D  E
- *          ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░     
+ *          ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░
  *          ░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░     T  O  D  O  过  多
- *          ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░     
+ *          ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░
  *          ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒░     女  人  唱  歌  男   人    改    B  U  G
- *          ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐     
+ *          ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
  *          ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄     希   望    の    花
  *          ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒
  *          ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒     开   发    屑  (wwwwwwwww

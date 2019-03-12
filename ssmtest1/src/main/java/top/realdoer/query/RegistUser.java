@@ -11,12 +11,12 @@ import lombok.Data;
  */
 @Data
 public class RegistUser {
-    @NotBlank(message = "用户名不能为空")
+    @NotBlank
     String username;
-    @NotBlank(message = "电话号码不能为空")
+    @NotBlank
     String phone;
-    @NotBlank(message = "验证码不能为空")
+    @NotBlank
     String verificationCode;
-    @NotBlank(message = "密码不能为空")
+    @NotBlank
     String password;
 }
