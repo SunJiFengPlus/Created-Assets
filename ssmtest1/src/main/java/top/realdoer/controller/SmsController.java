@@ -32,7 +32,7 @@ public class SmsController {
     static final String VER_CODE_KEY = "verificationCode";
 
     @GetMapping("/sms-login/{phone}")
-    public Result sendLoginSms(@PathVariable("phone") @NotNull String phone, BindingResult result,
+    public Result sendLoginSms(@PathVariable("phone") @NotNull String phone,
                                HttpSession session) throws ExternalAPIException {
         String verificationCode = VerifyCodeUtil.generateVerCode();
         session.setAttribute(VER_CODE_KEY, verificationCode);
@@ -44,7 +44,7 @@ public class SmsController {
     }
     
     @GetMapping("/sms-regist/{phone}")
-    public Result sendRegisterSms(@PathVariable("phone") @NotNull String phone, BindingResult result,
+    public Result sendRegisterSms(@PathVariable("phone") @NotNull String phone,
                                   HttpSession session) throws ExternalAPIException {
         String verificationCode =  VerifyCodeUtil.generateVerCode();
         session.setAttribute(VER_CODE_KEY, verificationCode);

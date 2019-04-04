@@ -4,13 +4,13 @@ import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -69,8 +69,8 @@ public class ItemController {
      * @return 返回作者上传项目集合的数据传输对象
      */
     @GetMapping("/portfolio/{authorId}")
-    public Result listPortfolio(@PathVariable("authorId") @NotNull Integer authorId,
-                                BindingResult result, ItemFilter filter) throws Exception {
+    public Result listPortfolio(@NotNull @PathVariable("authorId") Integer authorId,
+                                ItemFilter filter) throws Exception {
         List<Item> items = service.listPortfolio(authorId, filter);
         int[] navigatePages = new PageInfo<>(items, filter.getMaxNumPerPage()).getNavigatepageNums();
 
@@ -89,8 +89,7 @@ public class ItemController {
      * @return 返回一个项目
      */
     @GetMapping("/item/{itemId}")
-    public Result getItem(@PathVariable("itemId") @NotNull Integer itemId,
-                          BindingResult result) throws Exception {
+    public Result getItem(@PathVariable("itemId") @NotNull Integer itemId) throws Exception {
         Item item = service.getItem(itemId);
 
         return new Result.Builder()
@@ -145,7 +144,7 @@ public class ItemController {
      * @return 执行结果
      */
     @DeleteMapping("/item/{itemId}")
-    public Result deleteItem(@PathVariable("itemId") @NotNull Integer itemId, BindingResult result,
+    public Result deleteItem(@PathVariable("itemId") @NotNull Integer itemId,
                              HttpServletRequest request) throws Exception {
         // TODO: Object 强转 Integer 会抛类型转换异常??? 还需要先转换为 String 再转 Integer???
         String id = (String) JWTUtil.getPayloadDetail(request, Claims.ID);
@@ -166,7 +165,7 @@ public class ItemController {
  *          ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░
  *          ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒░     女  人  唱  歌  男   人    改    B  U  G
  *          ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐
- *          ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄     希   望    の    花
+ *          ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄     希  望  の  花
  *          ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒
- *          ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒     开   发    屑  (wwwwwwwww
+ *          ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒     开  发  屑  :)
  */

@@ -37,11 +37,10 @@ public class TemplateHtmlController {
      * 上传项目
      * @param item
      * @param request
-     * @throws AuthorizationException
      */
     @PostMapping("/htmlTemplate")
     public void saveHtmlTemplate(TemplateHtml item, HttpServletRequest request)
-            throws ServiceException, AuthorizationException {
+            throws Exception {
         // TODO: Object 强转 Integer 会抛类型转换异常???
 //      Integer userId = (Integer) JWTUtil.getPayloadDetail(request, Claims.ID);
         String id = (String) JWTUtil.getPayloadDetail(request, Claims.ID);
@@ -55,12 +54,11 @@ public class TemplateHtmlController {
      * 用户更新自己的项目
      * @param item
      * @param request
-     * @throws AuthorizationException
-     * @throws Exception 
+     * @throws Exception
      */
     @PutMapping("/htmlTemplate")
     public void updateTemplateHtml(TemplateHtml item, HttpServletRequest request)
-            throws ServiceException, AuthorizationException {
+            throws Exception {
         // TODO: Object 强转 Integer 会抛类型转换异常???
         String id = (String) JWTUtil.getPayloadDetail(request, Claims.ID);
         Integer userId = Integer.valueOf(id);

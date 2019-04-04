@@ -8,7 +8,9 @@ $(function(){
 		var h=$("#gg").attr("class");
 		// alert(h)
 		$.ajax({
-			url:"http://localhost:8080/ssmtest1/portfolio/"+h,
+			// XXX: 都是我的错, 不是前端的错, 都怪我没把问题说清楚, 都怪我不想太过麻烦前端
+			// XXX: 我总是以为前端回向我想的那也去做, 可是每次都差点意思, 检讨检讨   -- 后端留
+			url:"http://localhost:8080/ssmtest1/portfolio/1000",
 			type:"get",
 			success:function(msg){
 					h=Number(h);

@@ -5,7 +5,7 @@
             var username = $(".phone").val();
             var password = $(".pw").val();
             var storage=window.localStorage;
-            alert(password);
+            //alert(password);
             console.log(username);
             console.log(password);
             $.ajax({
@@ -126,7 +126,7 @@
 
     $('input[name=register_name]').blur(function(){
         if( this.value == '' ){
-            alert('用户名不能为空');
+            //alert('用户名不能为空');
             $(this).data('d',0);
         }else if( !(/^[\u4e00-\u9fff\w]{4,16}$/.test(this.value)) ){
             // alert('用户名格式错误，4到16位');
@@ -137,7 +137,7 @@
     });
     $('input[name=register_password]').blur(function(){
         if( this.value == '' ){
-            alert('密码不能为空');
+            //alert('密码不能为空');
             $(this).data('d',0);
         }else if( !(/^.{6,20}$/.test(this.value)) ){
             alert('密码格式错误，6-20位的字符数字和字母');
@@ -155,7 +155,7 @@
         });
 
         if( !$('input[name=checkbox]')[0].checked ){
-            alert('请勾选用户使用协议');
+            //alert('请勾选用户使用协议');
             $('input[name=checkbox]').data('d',0);
             dTotal+=$('input[name=checkbox]').data('d');
         }else{
@@ -181,14 +181,5 @@
                 }
             });
         }
-
-        
-
     });
-
-
-    
-
-
-        
     });
