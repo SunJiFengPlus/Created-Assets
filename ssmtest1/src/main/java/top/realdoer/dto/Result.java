@@ -12,19 +12,31 @@ import top.realdoer.constant.ResultEnum;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result {
-    // 执行结果信息
+    /**
+     * 执行结果信息
+     */
     private ResultEnum result;
-    // 请求目标数据
+    /**
+     * 请求目标数据
+     */
     private Object data;
-    // 显示页码
+    /**
+     * 显示页码
+     */
     private int[] navigatePages;
-    // 当前页码
+    /**
+     * 当前页码
+     */
     private Integer currentIndex;
-    // 鉴权信息 
+    /**
+     * 鉴权信息
+     */
     private String token;
-    // 路径
+    /**
+     * 路径
+     */
     private String path;
-    
+
     private Result(Builder builder) {
         this.data = builder.data;
         this.navigatePages = builder.navigatePages;
@@ -33,7 +45,7 @@ public class Result {
         this.path = builder.path;
         this.result = builder.result;
     }
-    
+
     @Getter
     public static class Builder {
         private Object data;
@@ -42,31 +54,37 @@ public class Result {
         private String token;
         private String path;
         private ResultEnum result;
-        
+
         public Builder buildData(Object data) {
             this.data = data;
             return this;
         }
+
         public Builder buildNavigatePages(int[] navigatePages) {
             this.navigatePages = navigatePages;
             return this;
         }
+
         public Builder buildCurrentIndex(Integer currentIndex) {
             this.currentIndex = currentIndex;
             return this;
         }
+
         public Builder buildToken(String token) {
             this.token = token;
             return this;
         }
+
         public Builder buildPath(String path) {
             this.path = path;
             return this;
         }
+
         public Builder buildResult(ResultEnum result) {
             this.result = result;
             return this;
         }
+
         public Result build() {
             return new Result(this);
         }

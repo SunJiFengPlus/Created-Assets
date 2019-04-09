@@ -13,7 +13,7 @@ import top.realdoer.exception.*;
 
 /**
  * 全局异常处理器, 仅处理目标方法执行产生的异常, 不会处理拦截器中的异常
- *
+ * TODO: 替换 checked exception
  * @author 孙继峰
  * @date 2018/12/04
  */
