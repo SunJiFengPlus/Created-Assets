@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/dataSources.local.xml
+.idea/workspace.xml
+Project.zip
+out/
+ssmtest1/target/
+userData/
+ssmtest1/src/test/java/top/realdoer/controller
+ssmtest1/src/test/java/top/realdoer/service
+ssmtest1/src/test/java/top/realdoer/util
